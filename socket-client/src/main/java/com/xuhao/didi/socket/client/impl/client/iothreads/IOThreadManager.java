@@ -1,7 +1,10 @@
 package com.xuhao.didi.socket.client.impl.client.iothreads;
 
 
-import com.xuhao.didi.core.iocore.ReaderImpl;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import com.xuhao.didi.core.iocore.ReaderOrig;
 import com.xuhao.didi.core.iocore.WriterImpl;
 import com.xuhao.didi.core.iocore.interfaces.IReader;
 import com.xuhao.didi.core.iocore.interfaces.ISendable;
@@ -13,9 +16,6 @@ import com.xuhao.didi.socket.client.impl.exceptions.ManuallyDisconnectException;
 import com.xuhao.didi.socket.client.sdk.client.OkSocketOptions;
 import com.xuhao.didi.socket.common.interfaces.basic.AbsLoopThread;
 import com.xuhao.didi.socket.common.interfaces.common_interfacies.IIOManager;
-
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * Created by xuhao on 2017/5/31.
@@ -56,7 +56,7 @@ public class IOThreadManager implements IIOManager<OkSocketOptions> {
 
     private void initIO() {
         assertHeaderProtocolNotEmpty();
-        mReader = new ReaderImpl();
+        mReader = new ReaderOrig();
         mReader.initialize(mInputStream, mSender);
         mWriter = new WriterImpl();
         mWriter.initialize(mOutputStream, mSender);

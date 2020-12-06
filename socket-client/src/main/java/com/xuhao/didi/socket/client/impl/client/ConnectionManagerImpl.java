@@ -1,5 +1,13 @@
 package com.xuhao.didi.socket.client.impl.client;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.security.SecureRandom;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+
 import com.xuhao.didi.core.iocore.interfaces.ISendable;
 import com.xuhao.didi.core.utils.SLog;
 import com.xuhao.didi.socket.client.impl.client.action.ActionHandler;
@@ -15,15 +23,6 @@ import com.xuhao.didi.socket.client.sdk.client.connection.IConnectionManager;
 import com.xuhao.didi.socket.common.interfaces.common_interfacies.IIOManager;
 import com.xuhao.didi.socket.common.interfaces.default_protocol.DefaultX509ProtocolTrustManager;
 import com.xuhao.didi.socket.common.interfaces.utils.TextUtils;
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.security.SecureRandom;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
 
 /**
  * Created by xuhao on 2017/5/16.

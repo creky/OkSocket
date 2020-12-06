@@ -44,7 +44,7 @@ artifacts {
     archives sourcesJar
 }
 
-bintray {
+/*bintray {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
     def bintrayUser = properties.getProperty('bintrayUser')
@@ -71,4 +71,4 @@ bintray {
             vcsTag = project.VERSION
         }
     }
-}
+}*/
