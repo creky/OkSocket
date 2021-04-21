@@ -8,8 +8,6 @@ import com.xuhao.didi.socket.client.impl.exceptions.ManuallyDisconnectException;
 import com.xuhao.didi.socket.client.sdk.client.action.IAction;
 import com.xuhao.didi.socket.common.interfaces.basic.AbsLoopThread;
 
-import java.io.IOException;
-
 /**
  * Created by xuhao on 2017/5/17.
  */
@@ -31,7 +29,7 @@ public class DuplexReadThread extends AbsLoopThread {
     }
 
     @Override
-    protected void runInLoopThread() throws IOException {
+    protected void runInLoopThread(){
         mReader.read();
     }
 

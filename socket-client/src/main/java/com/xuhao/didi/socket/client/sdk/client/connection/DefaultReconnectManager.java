@@ -136,7 +136,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
         }
 
         @Override
-        protected void runInLoopThread() throws Exception {
+        protected void runInLoopThread(){
             if (mDetach) {
                 SLog.i("ReconnectionManager already detached by framework.We decide gave up this reconnection mission!");
                 shutdown();

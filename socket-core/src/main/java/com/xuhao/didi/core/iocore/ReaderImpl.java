@@ -19,7 +19,7 @@ public class ReaderImpl extends AbsReader {
     private ByteBuffer mRemainingBuf;
 
     @Override
-    public void read() throws RuntimeException {
+    public void read(){
         OriginalData originalData = new OriginalData();
         IReaderProtocol headerProtocol = mOkOptions.getReaderProtocol();
         int headerLength = headerProtocol.getHeaderLength();
@@ -100,8 +100,7 @@ public class ReaderImpl extends AbsReader {
             }
             mStateSender.sendBroadcast(IOAction.ACTION_READ_COMPLETE, originalData);
         } catch (Exception e) {
-            ReadException readException = new ReadException(e);
-            throw readException;
+            e.printStackTrace();
         }
     }
 

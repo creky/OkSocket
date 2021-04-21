@@ -258,18 +258,22 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
         }
 
         @Override
-        protected void runInLoopThread() throws Exception {
-            ActionBean actionBean = ACTION_QUEUE.take();
-            if (actionBean != null && actionBean.mDispatcher != null) {
-                ActionDispatcher actionDispatcher = actionBean.mDispatcher;
-                synchronized (actionDispatcher.mResponseHandlerList) {
-                    List<ISocketActionListener> copyData = new ArrayList<>(actionDispatcher.mResponseHandlerList);
-                    Iterator<ISocketActionListener> it = copyData.iterator();
-                    while (it.hasNext()) {
-                        ISocketActionListener listener = it.next();
-                        actionDispatcher.dispatchActionToListener(actionBean.mAction, actionBean.arg, listener);
+        protected void runInLoopThread(){
+            try {
+                ActionBean actionBean = ACTION_QUEUE.take();
+                if (actionBean != null && actionBean.mDispatcher != null) {
+                    ActionDispatcher actionDispatcher = actionBean.mDispatcher;
+                    synchronized (actionDispatcher.mResponseHandlerList) {
+                        List<ISocketActionListener> copyData = new ArrayList<>(actionDispatcher.mResponseHandlerList);
+                        Iterator<ISocketActionListener> it = copyData.iterator();
+                        while (it.hasNext()) {
+                            ISocketActionListener listener = it.next();
+                            actionDispatcher.dispatchActionToListener(actionBean.mAction, actionBean.arg, listener);
+                        }
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 

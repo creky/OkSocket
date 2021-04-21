@@ -71,7 +71,7 @@ public abstract class AbsLoopThread implements Runnable {
 
     }
 
-    protected abstract void runInLoopThread() throws Exception;
+    protected abstract void runInLoopThread();
 
     protected abstract void loopFinish(Exception e);
 

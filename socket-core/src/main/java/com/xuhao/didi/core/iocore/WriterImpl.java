@@ -1,6 +1,5 @@
 package com.xuhao.didi.core.iocore;
 
-import com.xuhao.didi.core.exceptions.WriteException;
 import com.xuhao.didi.core.iocore.interfaces.IIOCoreOptions;
 import com.xuhao.didi.core.iocore.interfaces.IOAction;
 import com.xuhao.didi.core.iocore.interfaces.IPulseSendable;
@@ -79,8 +78,7 @@ public class WriterImpl implements IWriter<IIOCoreOptions> {
                     mStateSender.sendBroadcast(IOAction.ACTION_WRITE_COMPLETE, sendable);
                 }
             } catch (Exception e) {
-                WriteException writeException = new WriteException(e);
-                throw writeException;
+                throw new RuntimeException(e);
             }
             return true;
         }

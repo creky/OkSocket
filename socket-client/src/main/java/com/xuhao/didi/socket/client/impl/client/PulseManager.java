@@ -122,21 +122,25 @@ public class PulseManager implements IPulse {
     private class PulseThread extends AbsLoopThread {
 
         @Override
-        protected void runInLoopThread() throws Exception {
+        protected void runInLoopThread(){
             if (isDead) {
                 shutdown();
                 return;
             }
-            if (mManager != null && mSendable != null) {
-                if (mOkOptions.getPulseFeedLoseTimes() != -1 && mLoseTimes.incrementAndGet() >= mOkOptions.getPulseFeedLoseTimes()) {
-                    mManager.disconnect(new DogDeadException("you need feed dog on time,otherwise he will die"));
-                } else {
-                    mManager.send(mSendable);
+            try {
+                if (mManager != null && mSendable != null) {
+                    if (mOkOptions.getPulseFeedLoseTimes() != -1 && mLoseTimes.incrementAndGet() >= mOkOptions.getPulseFeedLoseTimes()) {
+                        mManager.disconnect(new DogDeadException("you need feed dog on time,otherwise he will die"));
+                    } else {
+                        mManager.send(mSendable);
+                    }
                 }
-            }
 
-            //not safety sleep.
-            Thread.sleep(mCurrentFrequency);
+                //not safety sleep.
+                Thread.sleep(mCurrentFrequency);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override

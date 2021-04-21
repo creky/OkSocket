@@ -39,7 +39,7 @@ public class SimplexIOThread extends AbsLoopThread {
     }
 
     @Override
-    protected void runInLoopThread() throws IOException {
+    protected void runInLoopThread() {
         isWrite = mWriter.write();
         if (isWrite) {
             isWrite = false;
