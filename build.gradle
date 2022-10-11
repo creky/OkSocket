@@ -2,12 +2,19 @@
 
 buildscript {
     repositories {
-//        maven {
-//            url 'https://dl.bintray.com/xuuhaoo/maven'
-//        }
-        jcenter()
+        mavenCentral()
+        flatDir {
+            dirs 'src/main/libs'
+        }
         google()
-
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven {
+            url 'https://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
@@ -21,15 +28,27 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven {
-//            url 'https://dl.bintray.com/xuuhaoo/maven'
-//        }
-        jcenter()
+        mavenCentral()
+        flatDir {
+            dirs 'src/main/libs'
+        }
         google()
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven {
+            url 'https://oss.jfrog.org/artifactory/oss-snapshot-local'
+        }
     }
 }
 
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
