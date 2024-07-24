@@ -59,6 +59,7 @@ public class OkSocket {
      * @return 该参数的连接管理器 {@link IConnectionManager} 连接参数仅作为配置该通道的参配,不影响全局参配
      * @deprecated
      */
+    @Deprecated
     public static IConnectionManager open(ConnectionInfo connectInfo, OkSocketOptions okOptions) {
         return holder.getConnection(connectInfo, okOptions);
     }
@@ -73,6 +74,7 @@ public class OkSocket {
      * @return 该参数的连接管理器 {@link IConnectionManager}
      * @deprecated
      */
+    @Deprecated
     public static IConnectionManager open(String ip, int port, OkSocketOptions okOptions) {
         ConnectionInfo info = new ConnectionInfo(ip, port);
         return holder.getConnection(info, okOptions);

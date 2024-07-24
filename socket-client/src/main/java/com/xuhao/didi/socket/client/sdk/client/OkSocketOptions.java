@@ -216,6 +216,7 @@ public class OkSocketOptions implements IIOCoreOptions {
          * @param writeOrder {@link ByteOrder} 字节序
          * @deprecated 请使用 {@link Builder#setWriteByteOrder(ByteOrder)}
          */
+        @Deprecated
         public Builder setWriteOrder(ByteOrder writeOrder) {
             setWriteByteOrder(writeOrder);
             return this;
